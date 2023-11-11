@@ -37,5 +37,5 @@ def buscar_producto(lista):
 
 cadena = productos()
 PRODUCTOS = lectura(cadena)
-print(PRODUCTOS, "\n")
+# print(PRODUCTOS, "\n")
 print(buscar_producto(PRODUCTOS))
