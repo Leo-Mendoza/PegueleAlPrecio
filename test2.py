@@ -39,4 +39,4 @@ def buscar_producto(listaProd):
     else :
         prodRandomPrice = [prodRandom[0], "(premium)", prodRandom[2]]
     return prodRandomPrice #Retornamos una lista con un producto aleatorio, con un precio aleatorio (entre premium o economico)
-# print(buscar_producto(lectura()))
+print(buscar_producto(lectura()))
