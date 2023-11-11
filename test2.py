@@ -3,30 +3,23 @@ def lectura():
     with open("productos.txt") as productosTxt:
         productosStr = productosTxt.read() #Lee el Txt con productos y lo vuelve string
 
-    contador = 0
-    listaProd = []
+    producto = []
     char = ""
-    newChar = ""
-    nuevaLista = []
+    listaProductos = []
 
-    for i in productosStr: #Recorre el string anterior, si encuentra un salto de linea lo reemplaza con una coma para separar el producto actual con el producto que viene. 
-        if i == "\n":
-            char += ","
-        else:
-            char += i #Deja el string como esta, pero en lugar de saltos de linea entre prodcutos, hay comas. 
-
-    for i in char: 
-        if i != ",":
-            newChar += i
-        else: #Va a buscar cuando encuentra comas en el str 
-            nuevaLista.append(newChar) #Cuando encuentra una coma, añade el precio o el nombre del producto (que esta entre comas) a una nueva lsita (con el nombre y los dos valores del producto).
-            newChar = "" 
-            contador += 1
-            if contador % 3 == 0 and contador != 1: #Cuando conto tres comas, añade la nueva lsita (del producto con su valor) a una lista final con todos los productos. 
-                listaProd.append(nuevaLista)
-                nuevaLista = [] #Se renueva la nueva lista para el siguiente producto.
-
-    return listaProd
+    for i in productosStr:
+        if i != "\n":
+            if i != ",": #Empieza a guardar letra por letra todo el string hasta que se encuentre una coma
+                char += i
+            else:
+                producto.append(char) #Cuando se encuentra una coma, suma todo lo que encontro hasta el momento (nombre o precio economico) en la lista del producto individual, reincia lo que encontro y sigue buscando la proxima coma o salto de linea
+                char = ""
+        else: #Cuando se encuentra un salto de linea, ya tiene guardado el ultimo precio (premium)
+            producto.append(char) #Suma el precio premium a la lista del producto
+            char = ""
+            listaProductos.append(producto) #Guarda la lista del producto individual en la lista que contiene todos los producto
+            producto = []  
+    return listaProductos #Retorna una lista de listas (lista de productos individuales con su nombre y precios)
 print(lectura())
 
 def buscar_producto(listaProd):
