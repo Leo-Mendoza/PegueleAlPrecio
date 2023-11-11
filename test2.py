@@ -8,17 +8,15 @@ def lectura():
     listaProductos = []
 
     for i in productosStr:
-        if i != "\n":
-            if i != ",": #Empieza a guardar letra por letra todo el string hasta que se encuentre una coma
-                char += i
-            else:
-                producto.append(char) #Cuando se encuentra una coma, suma todo lo que encontro hasta el momento (nombre o precio economico) en la lista del producto individual, reincia lo que encontro y sigue buscando la proxima coma o salto de linea
-                char = ""
-        else: #Cuando se encuentra un salto de linea, ya tiene guardado el ultimo precio (premium)
-            producto.append(char) #Suma el precio premium a la lista del producto
+        if i != "\n" and i != ",": #Guarda temporalmente todo lo que haya antes de una coma o salto de linea
+            char += i
+        else: 
+            producto.append(char) #Cuando encuentra una coma o un salto de linea, guarda las letras o cifras que recorrio hasta el momento en una lista del producto individual
             char = ""
-            listaProductos.append(producto) #Guarda la lista del producto individual en la lista que contiene todos los producto
-            producto = []  
+            if i == "\n": #Si es un salto de linea, guarda esa lista del producto en una lista de toos los productos, y continua buscando mas
+                listaProductos.append(producto)
+                producto = []
+
     return listaProductos #Retorna una lista de listas (lista de productos individuales con su nombre y precios)
 print(lectura())
 
