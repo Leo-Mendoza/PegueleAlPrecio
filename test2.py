@@ -27,7 +27,7 @@ def lectura():
                 nuevaLista = [] #Se renueva la nueva lista para el siguiente producto.
 
     return listaProd
-#print(lectura())
+print(lectura())
 
 def buscar_producto(listaProd):
     indiceRandom = random.randrange(0,len(listaProd)+1) #Selecciona un indice aleatorio de la lista de todos los productos. 
