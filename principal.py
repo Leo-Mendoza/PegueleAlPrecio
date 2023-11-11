@@ -8,7 +8,7 @@ import pygame
 from pygame.locals import *
 
 from configuracion import *
-from funcionesRESUELTO import *
+from funcionesVACIAS import *
 from extras import *
 
 
