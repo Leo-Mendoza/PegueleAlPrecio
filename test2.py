@@ -13,7 +13,7 @@ def lectura():
         else: 
             producto.append(char) #Cuando encuentra una coma o un salto de linea, guarda las letras o cifras que recorrio hasta el momento en una lista del producto individual
             char = ""
-            if i == "\n": #Si es un salto de linea, guarda esa lista del producto en una lista de toos los productos, y continua buscando mas
+            if i == "\n": #Si es un salto de linea, guarda esa lista del producto en una lista de todos los productos, y continua buscando mas
                 listaProductos.append(producto)
                 producto = []
 
