@@ -49,7 +49,7 @@ def dameProducto(listaProd, margen):
 def esUnPrecioValido(precio,listaProd,margen):
     cont = 0
     for elem in listaProd:
-        if abs(elem[1] - precio) <= margen: #Se fija que haya productos que tengan menos que el margen de diferencia con el precio
+        if abs(elem[1] - precio) <= margen or abs(elem[2] - precio) <= margen : #Se fija que haya productos que tengan menos que el margen de diferencia con el precio
             cont += 1
             if cont == 3: #Si hay 3 de esos productos, retorno true
                 return True
