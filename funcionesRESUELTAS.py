@@ -63,20 +63,25 @@ def procesar(prodPrincipal, prodCandidato, margen):
 
 def dameProductosAleatorios(producto, listaProd, margen):
     while True: #Hago un ciclo infinito en caso de no encontrar productos con un precio similar reiniciar el ciclo
-        prod1 = buscar_producto(listaProd)  #Busco 5 productos aleatorios
+        prod1 = buscar_producto(listaProd)  #Busco 5 productos aleatorios, que aleatoriamente tengan precio economico o premium
         prod2 = buscar_producto(listaProd)
         prod3 = buscar_producto(listaProd)
         prod4 = buscar_producto(listaProd)
         prod5 = buscar_producto(listaProd)
 
-        if abs(producto[2] - prod1[2]) <= margen: #Si alguno de estos cinco productos aleatorios tienen un precio dentro del margen respecto al producto que me dieron, retorno toda la lista, con el produco que me dieron y el que encontre + los 4 aleatorios. 
-            return [producto, prod1, prod2, prod3, prod4, prod5]
+        cont = 0
+
+        if abs(producto[2] - prod1[2]) <= margen: #Con cada producto verifico si esta dentro o no del margen. 
+            cont+=1 
         if abs(producto[2] - prod2[2]) <= margen:
-            return [producto, prod1, prod2, prod3, prod4, prod5]
+            cont+=1
         if abs(producto[2] - prod3[2]) <= margen:
-            return [producto, prod1, prod2, prod3, prod4, prod5]
+            cont+=1
         if abs(producto[2] - prod4[2]) <= margen:
-            return [producto, prod1, prod2, prod3, prod4, prod5]
+            cont+=1
         if abs(producto[2] - prod5[2]) <= margen:
+            cont+=1
+
+        if cont >= 2: #Si hay como minimo 2 productos dentro del margen, retorno toda la lista. Quizas haya mas de 2 productos aleatorioamente
             return [producto, prod1, prod2, prod3, prod4, prod5]
 # #print(dameProductosAleatorios(["Refrigerador", "(premium)", 4533], lectura(), 1000))    
