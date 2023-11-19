@@ -16,7 +16,12 @@ def main():
     # Centrar la ventana y despues inicializar pygame
     os.environ["SDL_VIDEO_CENTERED"] = "1"
     pygame.init()
-    # pygame.mixer.init()
+    
+    #Preparamos los sonidos
+    pygame.mixer.init()
+    erro = pygame.mixer.Sound("quit.mp3")
+    tecla = pygame.mixer.Sound("tecla.mp3")
+    correcto = pygame.mixer.Sound("correcto.mp3")
 
     # Preparar la ventana
     pygame.display.set_caption("Peguele al precio")
@@ -41,7 +46,7 @@ def main():
     # De manera aleatoria se debera tomar el valor economico o el valor premium.
     # Agregar  '(economico)' o '(premium)' y el precio
     productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
-    print(productos_en_pantalla)
+    # print(productos_en_pantalla)
 
     # dibuja la pantalla la primera vez
     dibujar(screen, productos_en_pantalla, producto,
@@ -65,6 +70,7 @@ def main():
 
             # Ver si fue apretada alguna tecla
             if e.type == KEYDOWN:
+                tecla.play()
                 letra = dameLetraApretada(e.key)
                 producto_candidato += letra  # va concatenando las letras que escribe
                 if e.key == K_BACKSPACE:
@@ -75,6 +81,11 @@ def main():
                     # chequeamos si el prducto no es el producto principal. Si no lo es procesamos el producto
                     if indice < len(productos_en_pantalla):
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        #Si procesar no retorna 0, esto significa que el usuario sumo puntos. Reproducimos un sonido de "acierto"
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            correcto.play()
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
+                            erro.play()
                         producto_candidato = ""
                         # Elegir un producto
                         producto = dameProducto(lista_productos, MARGEN)
