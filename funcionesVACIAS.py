@@ -4,8 +4,7 @@ import random
 import math
 from extras import *
 
-# lee el archivo y carga en la lista lista_producto todas las palabras
-
+#Lee el archivo y carga en la lista lista_producto todas las palabras
 def lectura():
     return [["Arroz", 1001, 1037],
             ["Yerba mate", 4546, 4904],
@@ -23,8 +22,7 @@ def lectura():
             ["Microondas", 4254, 4624]]
 
 
-#De la lista de productos elige uno al azar y devuelve una lista de 3 elementos, el primero el nombre del producto , el segundo si es economico
-#o premium y el tercero el precio.
+#De la lista de productos elige uno al azar y devuelve una lista de 3 elementos, el primero el nombre del producto , el segundo si es economico o premium y el tercero el precio.
 def buscar_producto(lista_productos):
     producto = ["Silla de oficina", "(premium)", 4391]
     return producto
@@ -39,15 +37,11 @@ def dameProducto(lista_productos, margen):
 def esUnPrecioValido(precio, lista_productos, margen):
     return True
 
-# Busca el precio del producto_principal y el precio del producto_candidato, si son iguales o dentro
-# del margen, entonces es valido y suma a la canasta el valor del producto. No suma si eligió directamente
-#el producto
+#Busca el precio del producto_principal y el precio del producto_candidato, si son iguales o dentro del margen, entonces es valido y suma a la canasta el valor del producto. No suma si eligió directamente el producto
 def procesar(producto_principal, producto_candidato, margen):
     return 0
 
-#Elegimos productos aleatorios, garantizando que al menos 2 tengan el mismo precio.
-#De manera aleatoria se debera tomar el valor economico o el valor premium. Agregar al nombre '(economico)' o '(premium)'
-#para que sea mostrado en pantalla.
+#Elegimos productos aleatorios, garantizando que al menos 2 tengan el mismo precio. De manera aleatoria se debera tomar el valor economico o el valor premium. Agregar al nombre '(economico)' o '(premium)' para que sea mostrado en pantalla.
 def dameProductosAleatorios(producto, lista_productos, margen):
     productos_seleccionados =   [["Monitor de computadora", "(premium)", 2870],
             ["Silla de oficina", "(economico)", 3174],
