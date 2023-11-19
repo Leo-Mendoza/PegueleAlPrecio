@@ -81,13 +81,14 @@ def procesar(prodPrincipal, prodCandidato, margen):
     else: return 0 #Caso contrario, retorna 0
 
 def dameProductosAleatorios(producto, listaProd, margen):
-    while True:
-        prod1 = buscar_producto(lectura())
+    while True: #Hago un ciclo infinito en caso de no encontrar productos con un precio similar reiniciar el ciclo
+        prod1 = buscar_producto(lectura())  #Busco 5 productos aleatorios
         prod2 = buscar_producto(lectura())
         prod3 = buscar_producto(lectura())
         prod4 = buscar_producto(lectura())
         prod5 = buscar_producto(lectura())
-        if abs(producto[2] - prod1[2]) <= margen:
+
+        if abs(producto[2] - prod1[2]) <= margen: #Si alguno de estos cinco productos aleatorios tienen un precio dentro del margen respecto al producto que me dieron, retorno toda la lista, con el produco que me dieron y el que encontre + los 4 aleatorios. 
             return [producto, prod1, prod2, prod3, prod4, prod5]
         if abs(producto[2] - prod2[2]) <= margen:
             return [producto, prod1, prod2, prod3, prod4, prod5]
