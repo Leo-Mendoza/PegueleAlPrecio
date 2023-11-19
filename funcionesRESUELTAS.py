@@ -64,16 +64,14 @@ def procesar(prodPrincipal, prodCandidato, margen):
 
 def sonProductosDiferentes(listaDeProductosAleatorios):
     listaParaComparar = listaDeProductosAleatorios  #Tengo dos listas, una que me dieron por parametro, y una para comparar
-    cont = 0
     productos = 0
     for elem in listaDeProductosAleatorios:
-        if elem[0] == listaParaComparar[cont]: 
-            productos +=1   #Cada vez que yo encuentro un producto de la lista que me pasaron en la lista de comparacion, sumo 1.
-        cont +=1
-    if productos == len(listaDeProductosAleatorios): #Si ninguno de los productos se repitio, el largo de la lista y la cantidad de productos que encontre deben ser iguales 
-        return True
+        for prod in listaParaComparar:
+            if  elem[0] == prod[0]:
+                productos +=1   #Cada vez que yo encuentro un producto de la lista que me pasaron en la lista de comparacion, sumo 1.
+    if productos == len(listaDeProductosAleatorios): return True #Si ninguno de los productos se repitio, el largo de la lista y la cantidad de productos que encontre deben ser iguales 
     else: return False #Si el largo de la lista es diferente de la cantidad de productos que conte, hay mas productos, o sea, alguno de ellos esta repetido y por ende son iguales
-    
+
 def dameProductosAleatorios(producto, listaProd, margen):
     while True: #Hago un ciclo infinito en caso de no encontrar productos con un precio similar reiniciar el ciclo
         prod1 = buscar_producto(listaProd)  #Busco 5 productos aleatorios, que aleatoriamente tengan precio economico o premium
@@ -97,4 +95,4 @@ def dameProductosAleatorios(producto, listaProd, margen):
 
             if cont >= 2: #Si hay como minimo 2 productos dentro del margen, retorno toda la lista. Quizas haya mas de 2 productos aleatorioamente
                 return [producto, prod1, prod2, prod3, prod4, prod5]
-# #print(dameProductosAleatorios(["Refrigerador", "(premium)", 4533], lectura(), 1000))    
+print(dameProductosAleatorios(["Refrigerador", "(premium)", 4533], lectura(), 1000))    
