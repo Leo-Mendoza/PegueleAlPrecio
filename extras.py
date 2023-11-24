@@ -32,7 +32,7 @@ class botones():
         
         #Almacena el texto final que aparecera ya con la fuente elegida aplicada
         #Es decir, con su respectivo tamaño y color
-        self.text = fuente_principal.render(self.text_input, True,'White')
+        self.text = fuente_principal.render(self.text_input, True,'Black')
         
         #Crea el rectangulo para el texto puesto que el tamaño del texto no es igual
         #Al de la imagen, por ende requiere un objeto diferente
@@ -54,7 +54,7 @@ class botones():
             self.text = fuente_principal.render(self.text_input, True,'Red')
         else: 
             #si no vuelve a su color original
-            self.text = fuente_principal.render(self.text_input, True,'White')
+            self.text = fuente_principal.render(self.text_input, True,'Black')
 
 def dameLetraApretada(key):
     if K_0 <= key and key <= K_9:
@@ -155,11 +155,11 @@ def asignar_botones(productos_en_pantalla,boton_imagen,producto_principal):
     prod5 = prod5_
     
     
-    boton1 = botones(boton_imagen,400,160,prod1)
-    boton2 = botones(boton_imagen,400,220,prod2)
+    boton1 = botones(boton_imagen,400,120,prod1)
+    boton2 = botones(boton_imagen,400,200,prod2)
     boton3 = botones(boton_imagen,400,280,prod3)
-    boton4 = botones(boton_imagen,400,340,prod4)
-    boton5 = botones(boton_imagen,400,400,prod5)
+    boton4 = botones(boton_imagen,400,360,prod4)
+    boton5 = botones(boton_imagen,400,440,prod5)
     
     lista_de_botones = [boton1,boton2,boton3,boton4,boton5]
     return lista_de_botones

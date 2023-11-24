@@ -13,16 +13,22 @@ from extras import *
 
 #Con codigo de leo
 #Cargo las imagenes para los botones y la escalo a un tamaño apropiado
-boton_imagen = pygame.image.load("imagenes\marco-verde.png")
-boton_imagen = pygame.transform.scale(boton_imagen, (500,100))
-boton_elegido_imagen = pygame.image.load("imagenes\marco-azul.png")
-boton_elegido_imagen = pygame.transform.scale(boton_elegido_imagen, (500,100))
+# imagenVerde = pygame.image.load("imagenes\marco-verde.png")
+# imagenVerde = pygame.transform.scale(imagenVerde, (500,100))
+# imagenAzul = pygame.image.load("imagenes\marco-azul.png")
+# imagenAzul = pygame.transform.scale(imagenAzul, (500,100))
 
 def main():
     # Centrar la ventana y despues inicializar pygame
     os.environ["SDL_VIDEO_CENTERED"] = "1"
     pygame.init()
     
+    #Cargo las imagenes para los botones y la escalo a un tamaño apropiado
+    imagenVerde = pygame.image.load("imagenes\marco-verde.png")
+    imagenVerde = pygame.transform.scale(imagenVerde, (500,60))
+    imagenAzul = pygame.image.load("imagenes\marco-azul.png")
+    imagenAzul = pygame.transform.scale(imagenAzul, (500,60))
+
     #Preparamos los sonidos
     pygame.mixer.init()
     erro = pygame.mixer.Sound("quit.mp3")
@@ -35,12 +41,6 @@ def main():
     # Preparar la ventana
     pygame.display.set_caption("Peguele al precio")
     screen = pygame.display.set_mode((ANCHO, ALTO))
-
-    #Cargo las imagenes para los botones y la escalo a un tamaño apropiado
-    # boton_imagen = pygame.image.load("imagenes\marco-verde.png")
-    # boton_imagen = pygame.transform.scale(boton_imagen, (500,100))
-    # boton_elegido_imagen = pygame.image.load("imagenes\marco-azul.png")
-    # boton_elegido_imagen = pygame.transform.scale(boton_elegido_imagen, (500,100))
 
     # tiempo total del juego
     gameClock = pygame.time.Clock()
@@ -67,7 +67,7 @@ def main():
     dibu(screen,productos_en_pantalla,producto,producto_candidato,puntos,segundos)
     
     #la funcion asignar botones devuelve una lista de botones configurados y listos para su uso
-    lista_botones = asignar_botones(productos_en_pantalla,boton_imagen,producto)
+    lista_botones = asignar_botones(productos_en_pantalla,imagenVerde,producto)
 
     # dibuja la pantalla la primera vez
     # dibujar(screen, productos_en_pantalla, producto,
@@ -136,7 +136,6 @@ def main():
                 if lista_botones[1].checkForInput(posicion_mouse):
                     producto_candidato = '2'
                     indice = int(producto_candidato)
-                    print(indice)
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
                         producto_candidato = ""
@@ -200,7 +199,7 @@ def main():
 
         # dibuja los nuevos parametros
         dibu(screen,productos_en_pantalla,producto,producto_candidato,puntos,segundos)
-        lista_botones = asignar_botones(productos_en_pantalla,boton_imagen,producto)
+        lista_botones = asignar_botones(productos_en_pantalla,imagenVerde,producto)
 
         # actualiza cada boton asegurandose de que cada vez que el cursor pase por encima de un boton, sus letras cambien de color
         for boton in lista_botones:

@@ -95,4 +95,4 @@ def dameProductosAleatorios(producto, listaProd, margen):
 
             if cont >= 2: #Si hay como minimo 2 productos dentro del margen, retorno toda la lista. Quizas haya mas de 2 productos aleatorioamente
                 return [producto, prod1, prod2, prod3, prod4, prod5]
-print(dameProductosAleatorios(["Refrigerador", "(premium)", 4533], lectura(), 1000))    
+# print(dameProductosAleatorios(["Refrigerador", "(premium)", 4533], lectura(), 1000))    
