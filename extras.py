@@ -43,6 +43,7 @@ class botones():
         #como la posicion es una tupla (x,y) podemos preguntar si el cursor esta entre todo el rango de su x y si su y esta en todo el rango de la y 
         if posicion[0] in range(self.rect.left,self.rect.right) and posicion[1] in range(self.rect.top,self.rect.bottom):
             return True
+        
     def changeColor(self,posicion):
         #si el cursor esrta en este rango cambia a color azul
         if posicion[0] in range(self.rect.left,self.rect.right) and posicion[1] in range(self.rect.top,self.rect.bottom):
@@ -60,15 +61,18 @@ def dameLetraApretada(key):
 def dibu(screen,productos_en_pantalla,producto_principal,producto_candidato,puntos,segundos):
     #asignamos una fuente principal
     fuente_principal = pygame.font.Font(pygame.font.get_default_font(), 20)
+
     #se dibuja la linea horizontal al igual que en la funcion original
     pygame.draw.line(screen, (255, 255, 255),(0, ALTO-70), (ANCHO, ALTO-70), 5)
     
     #si el producto principal es equivalente al primer producto de la lista productos_en_pantalla, lo muestra 
     if producto_principal == productos_en_pantalla[0]:
+
         producto_principal= producto_principal[0] + ' ' + producto_principal[1]
         producto_superficie = fuente_principal.render(producto_principal,True,COLOR_TIEMPO_FINAL)
         producto_rect = producto_superficie.get_rect()
         producto_rect.center = (400,50)
+
     screen.blit(producto_superficie,producto_rect)
     
     #muestra los inputs del teclado 
@@ -78,16 +82,13 @@ def dibu(screen,productos_en_pantalla,producto_principal,producto_candidato,punt
     #muestra el puntaje 
     score = fuente_principal.render("Puntos: " + str(puntos), 1, COLOR_TEXTO)
     screen.blit(score,(600, 10))
+
     if (segundos < 15): 
-        timer = fuente_principal.render(
-            "Tiempo: " + str(int(segundos)), 1, COLOR_TIEMPO_FINAL)
+        timer = fuente_principal.render("Tiempo: " + str(int(segundos)), 1, COLOR_TIEMPO_FINAL)
     else:
-        timer = fuente_principal.render(
-            "Tiempo: " + str(int(segundos)), 1, COLOR_TEXTO)
+        timer = fuente_principal.render("Tiempo: " + str(int(segundos)), 1, COLOR_TEXTO)
     
     screen.blit(timer, (10, 10))
-    
-    # pygame.display.flip()
 
 def asignar_botones(productos_en_pantalla,boton_imagen,producto_principal):
     if producto_principal == productos_en_pantalla[0]: 

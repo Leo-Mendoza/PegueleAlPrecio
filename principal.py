@@ -1,8 +1,5 @@
 #! /usr/bin/env python
 import os
-import random
-import sys
-import math
 import pygame
 from pygame.locals import *
 from configuracion import *

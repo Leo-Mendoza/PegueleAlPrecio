@@ -1,4 +1,5 @@
 import random
+#Lee el archivo y carga en la lista lista_producto todas las palabras
 def lectura():
     with open("productos.txt") as productosTxt:
         productosStr = productosTxt.read() #Lee el Txt con productos y lo vuelve string
@@ -18,8 +19,8 @@ def lectura():
                 listaProductos.append(producto)
                 producto = []
     return listaProductos #Retorna una lista de listas (lista de productos individuales con su nombre y precios)
-# print(lectura())
 
+#De la lista de productos elige uno al azar y devuelve una lista de 3 elementos, el primero el nombre del producto , el segundo si es economico o premium y el tercero el precio.
 def buscar_producto(listaProd): 
     prodRandom = listaProd[ random.randint( 0 , len(listaProd) -1 ) ] #Selecciona un idnice aleatorio de la lista ed productos y elige ese producto
     premiumOEconomico = random.randint(1, 2) #Da un indice random (1 o 2) para decidir si se va a usar el precio premium (guardado en el indice 2 del producto) o economico
@@ -29,8 +30,8 @@ def buscar_producto(listaProd):
     else :
         prodRandomPrice = [prodRandom[0], "(premium)", prodRandom[2]]
     return prodRandomPrice #Retornamos una lista con un producto aleatorio, con un precio aleatorio (entre premium o economico)
-# print(buscar_producto(lectura()))
 
+#Elige el producto. Debe tener al menos dos productos con un valor similar
 def dameProducto(listaProd, margen): 
     while True: #Creamos un ciclo infinito donde generaremos 3 productos aleatoriamente hasta que encontremos el correcto
         prod1 = buscar_producto(listaProd) 
@@ -44,8 +45,8 @@ def dameProducto(listaProd, margen):
             return prod2
         if abs(prod3[2] - prod1[2]) <= margen and abs(prod3[2] - prod2[2]) <= margen:
             return prod3
-# print(dameProducto(lectura(), 1000))
 
+#Devuelve True si existe el precio recibido como parametro aparece al menos 3 veces. Debe considerar el Margen.
 def esUnPrecioValido(precio,listaProd,margen):
     cont = 0
     for elem in listaProd:
@@ -54,8 +55,8 @@ def esUnPrecioValido(precio,listaProd,margen):
             if cont == 3: #Si hay 3 de esos productos, retorno true
                 return True
     return False
-# print(esUnPrecioValido(183, lectura(),1000))
 
+#Busca el precio del producto_principal y el precio del producto_candidato, si son iguales o dentro del margen, entonces es valido y suma a la canasta el valor del producto. No suma si eligió directamente el producto
 def procesar(prodPrincipal, prodCandidato, margen):
     if abs(prodPrincipal[2] - prodCandidato[2]) <= margen:  #Busca que haya una diferencia menor al margen entre el precio del produto y el precio del candidato
         return prodCandidato[2] #Si la diferencia es menor al margen, retorna el precio del candidato
@@ -72,6 +73,7 @@ def sonProductosDiferentes(listaDeProductosAleatorios):
     if productos == len(listaDeProductosAleatorios): return True #Si ninguno de los productos se repitio, el largo de la lista y la cantidad de productos que encontre deben ser iguales 
     else: return False #Si el largo de la lista es diferente de la cantidad de productos que conte, hay mas productos, o sea, alguno de ellos esta repetido y por ende son iguales
 
+#Elegimos productos aleatorios, garantizando que al menos 2 tengan el mismo precio. De manera aleatoria se debera tomar el valor economico o el valor premium. Agregar al nombre '(economico)' o '(premium)' para que sea mostrado en pantalla.
 def dameProductosAleatorios(producto, listaProd, margen):
     while True: #Hago un ciclo infinito en caso de no encontrar productos con un precio similar reiniciar el ciclo
         prod1 = buscar_producto(listaProd)  #Busco 5 productos aleatorios, que aleatoriamente tengan precio economico o premium
