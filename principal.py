@@ -127,6 +127,10 @@ def main():
                     indice = int(producto_candidato)
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            correcto.play()
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
+                            erro.play()
                         producto_candidato = ""
                     
                         producto = dameProducto(lista_productos, MARGEN)
@@ -141,6 +145,10 @@ def main():
                     indice = int(producto_candidato)
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            correcto.play()
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
+                            erro.play()
                         producto_candidato = ""
                     
                         producto = dameProducto(lista_productos, MARGEN)
@@ -155,6 +163,10 @@ def main():
                     indice = int(producto_candidato)
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            correcto.play()
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
+                            erro.play()
                         producto_candidato = ""
                     
                         producto = dameProducto(lista_productos, MARGEN)
@@ -169,6 +181,10 @@ def main():
                     indice = int(producto_candidato)
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            correcto.play()
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
+                            erro.play()
                         producto_candidato = ""
                     
                         producto = dameProducto(lista_productos, MARGEN)
@@ -183,6 +199,10 @@ def main():
                     indice = int(producto_candidato)
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            correcto.play()
+                        if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
+                            erro.play()
                         producto_candidato = ""
                     
                         producto = dameProducto(lista_productos, MARGEN)
