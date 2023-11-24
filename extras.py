@@ -22,20 +22,16 @@ class botones():
         #posicion y del boton
         self.Ypos = Ypos
         
-        #self.rect va a ser el rectangulo definido por las cordenadas x e y de self, 
-        #centradas por el argumento "center" dentro de la funcion get_rect() que retorna un rectangulo
-        #rectangulo donde habra colision y un efecto
+        #self.rect va a ser el rectangulo definido por las cordenadas x e y de self, centradas por el argumento "center" dentro de la funcion get_rect() que retorna un rectangulo rectangulo donde habra colision y un efecto
         self.rect = self.image.get_rect(center=(self.Xpos,self.Ypos))
         
         #Guarda la cadena dentro del boton en la variable self.text
         self.text_input = text_input
         
-        #Almacena el texto final que aparecera ya con la fuente elegida aplicada
-        #Es decir, con su respectivo tamaño y color
+        #Almacena el texto final que aparecera ya con la fuente elegida aplicada, es decir, con su respectivo tamaño y color
         self.text = fuente_principal.render(self.text_input, True,'Black')
         
-        #Crea el rectangulo para el texto puesto que el tamaño del texto no es igual
-        #Al de la imagen, por ende requiere un objeto diferente
+        #Crea el rectangulo para el texto puesto que el tamaño del texto no es igual, al de la imagen, por ende requiere un objeto diferente
         self.text_rect = self.text.get_rect(center=(self.Xpos,self.Ypos))
 
     def update(self):
@@ -44,8 +40,7 @@ class botones():
         screen.blit(self.text,self.text_rect)
         
     def checkForInput(self,posicion):
-        #como la posicion es una tupla (x,y) podemos preguntar si el cursor esta entre todo el rango de su x
-        #y si su y esta en todo el rango de la y 
+        #como la posicion es una tupla (x,y) podemos preguntar si el cursor esta entre todo el rango de su x y si su y esta en todo el rango de la y 
         if posicion[0] in range(self.rect.left,self.rect.right) and posicion[1] in range(self.rect.top,self.rect.bottom):
             return True
     def changeColor(self,posicion):
@@ -62,50 +57,13 @@ def dameLetraApretada(key):
     else:
         return ""
 
-
-# def dibujar(screen, productos_en_pantalla, producto_principal, producto_candidato, puntos, segundos):
-#     defaultFont = pygame.font.Font(pygame.font.get_default_font(), 20)
-#     defaultFontGrande = pygame.font.Font(pygame.font.get_default_font(), 30)
-
-#     # Linea del piso
-#     pygame.draw.line(screen, (255, 255, 255),
-#                      (0, ALTO-70), (ANCHO, ALTO-70), 5)
-#     ren1 = defaultFont.render(producto_candidato, 1, COLOR_TEXTO)
-#     ren2 = defaultFont.render("Puntos: " + str(puntos), 1, COLOR_TEXTO)
-#     if (segundos < 15):
-#         ren3 = defaultFont.render(
-#             "Tiempo: " + str(int(segundos)), 1, COLOR_TIEMPO_FINAL)
-#     else:
-#         ren3 = defaultFont.render(
-#             "Tiempo: " + str(int(segundos)), 1, COLOR_TEXTO)
-#    # Dibujar los nombres de los productos uno debajo del otro
-#     x_pos = 130
-#     y_pos = ALTO - (ALTO-100)
-
-#     pos = 0
-#     for producto in productos_en_pantalla:
-#         nombre_en_pantalla = str(pos) + " - "+producto[0]+producto[1]
-#         if producto[0] == producto_principal[0] and producto[1]== producto_principal[1]:
-#             screen.blit(defaultFontGrande.render(nombre_en_pantalla,
-#                         1, COLOR_TIEMPO_FINAL), (x_pos, y_pos))
-#         else:
-#             screen.blit(defaultFontGrande.render(
-#                 nombre_en_pantalla, 1, COLOR_LETRAS), (x_pos, y_pos))
-#         pos += 1
-#         y_pos += ESPACIO
-
-#     screen.blit(ren1, (190, 570))
-#     screen.blit(ren2, (600, 10))
-#     screen.blit(ren3, (10, 10))
-
 def dibu(screen,productos_en_pantalla,producto_principal,producto_candidato,puntos,segundos):
     #asignamos una fuente principal
     fuente_principal = pygame.font.Font(pygame.font.get_default_font(), 20)
     #se dibuja la linea horizontal al igual que en la funcion original
     pygame.draw.line(screen, (255, 255, 255),(0, ALTO-70), (ANCHO, ALTO-70), 5)
     
-    #si el producto principal es equivalente al primer producto
-    #de la lista productos_en_pantalla, lo muestra 
+    #si el producto principal es equivalente al primer producto de la lista productos_en_pantalla, lo muestra 
     if producto_principal == productos_en_pantalla[0]:
         producto_principal= producto_principal[0] + ' ' + producto_principal[1]
         producto_superficie = fuente_principal.render(producto_principal,True,COLOR_TIEMPO_FINAL)

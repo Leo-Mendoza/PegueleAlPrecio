@@ -3,20 +3,11 @@ import os
 import random
 import sys
 import math
-
 import pygame
 from pygame.locals import *
-
 from configuracion import *
 from funcionesRESUELTAS import *
 from extras import *
-
-#Con codigo de leo
-#Cargo las imagenes para los botones y la escalo a un tamaño apropiado
-# imagenVerde = pygame.image.load("imagenes\marco-verde.png")
-# imagenVerde = pygame.transform.scale(imagenVerde, (500,100))
-# imagenAzul = pygame.image.load("imagenes\marco-azul.png")
-# imagenAzul = pygame.transform.scale(imagenAzul, (500,100))
 
 def main():
     # Centrar la ventana y despues inicializar pygame
@@ -60,9 +51,7 @@ def main():
     # Elegir un producto, [producto, calidad, precio]
     producto = dameProducto(lista_productos, MARGEN)
 
-    # Elegimos productos aleatorios, garantizando que al menos 2 mas tengan el mismo precio.
-    # De manera aleatoria se debera tomar el valor economico o el valor premium.
-    # Agregar  '(economico)' o '(premium)' y el precio
+    # Elegimos productos aleatorios, garantizando que al menos 2 mas tengan el mismo precio. De manera aleatoria se debera tomar el valor economico o el valor premium. Agregar  '(economico)' o '(premium)' y el precio
     productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
     # print(productos_en_pantalla)
 
@@ -71,10 +60,6 @@ def main():
     
     #la funcion asignar botones devuelve una lista de botones configurados y listos para su uso
     lista_botones = asignar_botones(productos_en_pantalla,imagenVerde,producto)
-
-    # dibuja la pantalla la primera vez
-    # dibujar(screen, productos_en_pantalla, producto,
-    #         producto_candidato, puntos, segundos)
 
     while segundos > fps/1000:
         # 1 frame cada 1/fps segundos
@@ -215,10 +200,6 @@ def main():
 
         # Limpiar pantalla anterior
         screen.fill(COLOR_FONDO)
-
-        # Dibujar de nuevo todo
-        # dibujar(screen, productos_en_pantalla, producto,
-        #         producto_candidato, puntos, segundos)
 
         # dibuja los nuevos parametros
         dibu(screen,productos_en_pantalla,producto,producto_candidato,puntos,segundos)
