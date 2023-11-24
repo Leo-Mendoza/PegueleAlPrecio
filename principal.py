@@ -41,6 +41,7 @@ def main():
 
     puntos = 0  # puntos o dinero acumulado por el jugador
     producto_candidato = ""
+    carrito = []
 
     #Lee el archivo y devuelve una lista con los productos,
     lista_productos = lectura()  # lista de productos
@@ -91,6 +92,7 @@ def main():
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
                         #Si procesar no retorna 0, esto significa que el usuario sumo puntos. Reproducimos un sonido de "acierto"
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            carrito.append(productos_en_pantalla[indice])
                             correcto.play()
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
                             erro.play()
@@ -110,6 +112,7 @@ def main():
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            carrito.append(productos_en_pantalla[indice])
                             correcto.play()
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
                             erro.play()
@@ -128,6 +131,7 @@ def main():
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            carrito.append(productos_en_pantalla[indice])
                             correcto.play()
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
                             erro.play()
@@ -146,6 +150,7 @@ def main():
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            carrito.append(productos_en_pantalla[indice])
                             correcto.play()
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
                             erro.play()
@@ -164,6 +169,7 @@ def main():
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            carrito.append(productos_en_pantalla[indice])
                             correcto.play()
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
                             erro.play()
@@ -182,6 +188,7 @@ def main():
                     if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
+                            carrito.append(productos_en_pantalla[indice])
                             correcto.play()
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
                             erro.play()
@@ -209,11 +216,16 @@ def main():
         
         pygame.display.update()  
         pygame.display.flip()
-
+        
+        if segundos <= 0:
+            carrito_en_pantalla = mostrarCarrito(carrito)
+            print(carrito_en_pantalla)
+        
     while 1:
         # Esperar el QUIT del usuario
         for e in pygame.event.get():
             if e.type == QUIT:
+
                 pygame.quit()
                 return
 

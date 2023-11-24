@@ -122,3 +122,9 @@ def asignar_botones(productos_en_pantalla,boton_imagen,producto_principal):
     
     lista_de_botones = [boton1,boton2,boton3,boton4,boton5]
     return lista_de_botones
+
+def mostrarCarrito(carrito):
+    carrito_en_pantalla = []
+    for i in carrito:
+        carrito_en_pantalla.append(i[0])
+    return carrito_en_pantalla
