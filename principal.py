@@ -23,6 +23,9 @@ def main():
     os.environ["SDL_VIDEO_CENTERED"] = "1"
     pygame.init()
     
+    favicono = pygame.image.load("imagenes/green-pixel-dollar-symbol.png")
+    pygame.display.set_icon(favicono)
+    
     #Cargo las imagenes para los botones y la escalo a un tamaño apropiado
     imagenVerde = pygame.image.load("imagenes\marco-verde.png")
     imagenVerde = pygame.transform.scale(imagenVerde, (500,60))
