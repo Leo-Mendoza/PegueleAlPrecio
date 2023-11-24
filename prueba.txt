@@ -1,0 +1,17 @@
+Gafas de sol,1202,4629
+Reloj,1622,3328
+Bolsa,3752,4995
+Mochila,4238,4473
+Maleta de viaje,3425,3595
+Auriculares inalambricos,2024,2652
+Camara digital,1673,3405
+Consola de videojuegos,2567,3170
+Tableta,3672,4967
+Papel higienico,2409,4495
+Champu,1065,2905
+Jabon de manos,2286,4203
+Sabana,4302,4467
+Almohada,4249,4488
+Toalla,3301,3993
+Escoba,2751,3575
+Mop,4504,4862
