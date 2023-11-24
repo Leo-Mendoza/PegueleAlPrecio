@@ -11,6 +11,12 @@ from configuracion import *
 from funcionesRESUELTAS import *
 from extras import *
 
+#Con codigo de leo
+#Cargo las imagenes para los botones y la escalo a un tamaño apropiado
+boton_imagen = pygame.image.load("imagenes\marco-verde.png")
+boton_imagen = pygame.transform.scale(boton_imagen, (500,100))
+boton_elegido_imagen = pygame.image.load("imagenes\marco-azul.png")
+boton_elegido_imagen = pygame.transform.scale(boton_elegido_imagen, (500,100))
 
 def main():
     # Centrar la ventana y despues inicializar pygame
@@ -22,10 +28,19 @@ def main():
     erro = pygame.mixer.Sound("quit.mp3")
     tecla = pygame.mixer.Sound("tecla.mp3")
     correcto = pygame.mixer.Sound("correcto.mp3")
+    
+    #defino el texto en el borde de la ventana
+    pygame.font.init() #REVISAR
 
     # Preparar la ventana
     pygame.display.set_caption("Peguele al precio")
     screen = pygame.display.set_mode((ANCHO, ALTO))
+
+    #Cargo las imagenes para los botones y la escalo a un tamaño apropiado
+    # boton_imagen = pygame.image.load("imagenes\marco-verde.png")
+    # boton_imagen = pygame.transform.scale(boton_imagen, (500,100))
+    # boton_elegido_imagen = pygame.image.load("imagenes\marco-azul.png")
+    # boton_elegido_imagen = pygame.transform.scale(boton_elegido_imagen, (500,100))
 
     # tiempo total del juego
     gameClock = pygame.time.Clock()
@@ -48,9 +63,15 @@ def main():
     productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
     # print(productos_en_pantalla)
 
+    # la funcion dibu muestra tanto el producto principal como el timer y el score
+    dibu(screen,productos_en_pantalla,producto,producto_candidato,puntos,segundos)
+    
+    #la funcion asignar botones devuelve una lista de botones configurados y listos para su uso
+    lista_botones = asignar_botones(productos_en_pantalla,boton_imagen,producto)
+
     # dibuja la pantalla la primera vez
-    dibujar(screen, productos_en_pantalla, producto,
-            producto_candidato, puntos, segundos)
+    # dibujar(screen, productos_en_pantalla, producto,
+    #         producto_candidato, puntos, segundos)
 
     while segundos > fps/1000:
         # 1 frame cada 1/fps segundos
@@ -59,6 +80,8 @@ def main():
 
         if True:
             fps = 3
+
+        posicion_mouse = pygame.mouse.get_pos()
 
         # Buscar la tecla apretada del modulo de eventos de pygame
         for e in pygame.event.get():
@@ -79,7 +102,7 @@ def main():
                 if e.key == K_RETURN:  # presionó enter
                     indice = int(producto_candidato)
                     # chequeamos si el prducto no es el producto principal. Si no lo es procesamos el producto
-                    if indice < len(productos_en_pantalla):
+                    if indice < len(productos_en_pantalla) and indice != 0:
                         puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
                         #Si procesar no retorna 0, esto significa que el usuario sumo puntos. Reproducimos un sonido de "acierto"
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
@@ -93,7 +116,78 @@ def main():
                         productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
                     else:
                         producto_candidato = ""
+            #si el evento es el click
+            if e.type == pygame.MOUSEBUTTONDOWN:
+                #si el click es en el boton que corresponde al indice 0 de la lista
+                if lista_botones[0].checkForInput(posicion_mouse):
+                    producto_candidato = '1'
+                    indice = int(producto_candidato)
+                    if indice < len(productos_en_pantalla) and indice != 0:
+                        puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        producto_candidato = ""
+                    
+                        producto = dameProducto(lista_productos, MARGEN)
+                        productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
 
+                    else:
+                        producto_candidato = ""
+
+                #si el click es en el boton que corresponde al indice 1 de la lista
+                if lista_botones[1].checkForInput(posicion_mouse):
+                    producto_candidato = '2'
+                    indice = int(producto_candidato)
+                    print(indice)
+                    if indice < len(productos_en_pantalla) and indice != 0:
+                        puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        producto_candidato = ""
+                    
+                        producto = dameProducto(lista_productos, MARGEN)
+                        productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
+
+                    else:
+                        producto_candidato = ""
+                
+                #si el click es en el boton que corresponde al indice 2 de la lista
+                if lista_botones[2].checkForInput(posicion_mouse):
+                    producto_candidato = '3'
+                    indice = int(producto_candidato)
+                    if indice < len(productos_en_pantalla) and indice != 0:
+                        puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        producto_candidato = ""
+                    
+                        producto = dameProducto(lista_productos, MARGEN)
+                        productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
+
+                    else:
+                        producto_candidato = ""                    
+
+                #si el click es en el boton que corresponde al indice 3 de la lista
+                if lista_botones[3].checkForInput(posicion_mouse):
+                    producto_candidato = '4'
+                    indice = int(producto_candidato)
+                    if indice < len(productos_en_pantalla) and indice != 0:
+                        puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        producto_candidato = ""
+                    
+                        producto = dameProducto(lista_productos, MARGEN)
+                        productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
+
+                    else:
+                        producto_candidato = ""                   
+                
+                #si el click es en el boton que corresponde al indice 4 de la lista
+                if lista_botones[4].checkForInput(posicion_mouse):
+                    producto_candidato = '5'
+                    indice = int(producto_candidato)
+                    if indice < len(productos_en_pantalla) and indice != 0:
+                        puntos += procesar(producto, productos_en_pantalla[indice], MARGEN)
+                        producto_candidato = ""
+                    
+                        producto = dameProducto(lista_productos, MARGEN)
+                        productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
+
+                    else:
+                        producto_candidato = ""  
 
         segundos = TIEMPO_MAX - pygame.time.get_ticks()/1000
 
@@ -101,9 +195,19 @@ def main():
         screen.fill(COLOR_FONDO)
 
         # Dibujar de nuevo todo
-        dibujar(screen, productos_en_pantalla, producto,
-                producto_candidato, puntos, segundos)
+        # dibujar(screen, productos_en_pantalla, producto,
+        #         producto_candidato, puntos, segundos)
 
+        # dibuja los nuevos parametros
+        dibu(screen,productos_en_pantalla,producto,producto_candidato,puntos,segundos)
+        lista_botones = asignar_botones(productos_en_pantalla,boton_imagen,producto)
+
+        # actualiza cada boton asegurandose de que cada vez que el cursor pase por encima de un boton, sus letras cambien de color
+        for boton in lista_botones:
+            boton.changeColor(posicion_mouse)
+            boton.update()
+        
+        pygame.display.update()  
         pygame.display.flip()
 
     while 1:
