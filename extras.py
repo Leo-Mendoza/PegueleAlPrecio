@@ -113,7 +113,6 @@ def asignar_botones(productos_en_pantalla,boton_imagen,producto_principal):
     prod4 = prod4_
     prod5 = prod5_
     
-    
     boton1 = botones(boton_imagen,400,120,prod1)
     boton2 = botones(boton_imagen,400,200,prod2)
     boton3 = botones(boton_imagen,400,280,prod3)
@@ -128,3 +127,17 @@ def mostrarCarrito(carrito):
     for i in carrito:
         carrito_en_pantalla.append(i[0])
     return carrito_en_pantalla
+
+# def listaSinLosProductosAnteriores(lista, productosARemover):
+#     for elem in lista:
+#         for i in range(len(productosARemover)):
+#             if elem[0] == productosARemover[i][0]:
+#                 lista.remove(elem)
+#     return lista
+
+# def listaSinLosProductosAnteriores(lista, productosARemover):
+#     for elem in lista:
+#         for i in range(len(productosARemover)):
+#             if elem == productosARemover[i]:
+#                 lista.remove(elem)
+#     return lista

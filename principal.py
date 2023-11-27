@@ -6,6 +6,9 @@ from configuracion import *
 from funcionesRESUELTAS import *
 from extras import *
 
+#Lee el archivo y devuelve una lista con los productos
+lsProd = lectura()
+
 def main():
     # Centrar la ventana y despues inicializar pygame
     os.environ["SDL_VIDEO_CENTERED"] = "1"
@@ -43,8 +46,7 @@ def main():
     producto_candidato = ""
     carrito = []
 
-    #Lee el archivo y devuelve una lista con los productos,
-    lista_productos = lectura()  # lista de productos
+    lista_productos = lsProd  # lista de productos  
 
     # Elegir un producto, [producto, calidad, precio]
     producto = dameProducto(lista_productos, MARGEN)
@@ -199,6 +201,9 @@ def main():
 
                     else:
                         producto_candidato = ""  
+
+        # Descomenar esto hace que no se repitan los productos en toda una sesion. Problema: A la doceava ronda nos quedamos sin productos.
+        #  lista_productos = listaSinLosProductosAnteriores(lista_productos,productos_en_pantalla)
 
         segundos = TIEMPO_MAX - pygame.time.get_ticks()/1000
 
