@@ -25,9 +25,9 @@ def main():
 
     #Preparamos los sonidos
     pygame.mixer.init()
-    erro = pygame.mixer.Sound("quit.mp3")
-    tecla = pygame.mixer.Sound("tecla.mp3")
-    correcto = pygame.mixer.Sound("correcto.mp3")
+    erro = pygame.mixer.Sound("audios/quit.wav")
+    tecla = pygame.mixer.Sound("audios/tecla.wav")
+    correcto = pygame.mixer.Sound("audios/correcto.wav")
     
     #defino el texto en el borde de la ventana
     pygame.font.init() #REVISAR
