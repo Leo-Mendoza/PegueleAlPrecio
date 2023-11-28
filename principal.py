@@ -116,6 +116,7 @@ def main():
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) != 0:
                             carrito.append(productos_en_pantalla[indice])
                             correcto.play()
+                            
                         if procesar(producto, productos_en_pantalla[indice], MARGEN) == 0:
                             erro.play()
                         producto_candidato = ""
